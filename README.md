@@ -7,3 +7,12 @@ iOS App from Alura
 :apple:	Recursos Nativos iOS
 <br>
 :floppy_disk:	CoreData
+<br> 
+<br>
+<br>
+<i> English :us:	
+<br>
+<br>
+:apple:	Native iOS Resources
+<br>
+:floppy_disk:	CoreData
