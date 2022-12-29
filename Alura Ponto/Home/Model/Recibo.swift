@@ -31,10 +31,25 @@ class Recibo: NSManagedObject {
 extension Recibo {
     // MARK: Core Data DAO
     
+  class func fetchRequest() -> NSFetchRequest<Recibo> {
+        return NSFetchRequest(entityName: "Recibo")
+    }
+    
     func save(_ contexto: NSManagedObjectContext)  {
         
         do {
             try contexto.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+   class func downloadData(_ fetchedResultController: NSFetchedResultsController<Recibo>)
+    // class function nao precisa instanciar a classe
+    {
+        // toda Throw function pode retornar excecoes e necessário usar do + try + catch
+        do {
+            try fetchedResultController.performFetch()
         } catch {
             print(error.localizedDescription)
         }
