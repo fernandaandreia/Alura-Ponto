@@ -31,6 +31,10 @@ class ReciboViewController: UIViewController {
         
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }()
+    var contexto: NSManagedObjectContext = {
+        let contexto = UIApplication.shared.delegate as! AppDelegate
+        return contexto.persistentContainer.viewContext
+    }()
     
     // MARK: - View life cycle
     
@@ -114,7 +118,8 @@ extension ReciboViewController: UITableViewDelegate {
 
 extension ReciboViewController: ReciboTableViewCellDelegate {
     func deletarRecibo(_ index: Int) {
-//        buscador.fetchedObjects?.remove(at: index)
+        guard let recibo = buscador.fetchedObjects?[index] else { return }
+        recibo.deletar(contexto)
         reciboTableView.reloadData()
     }
 }
@@ -128,5 +133,17 @@ extension ReciboViewController: CameraDelegate {
 }
 
 extension ReciboViewController: NSFetchedResultsControllerDelegate {
-    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+       
+        switch type {
+        case .delete:
+            if let indexPath = indexPath {
+                reciboTableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+        default:
+            reciboTableView.reloadData()
+        }
+        
+    }
 }
