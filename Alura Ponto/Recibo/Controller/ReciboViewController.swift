@@ -47,6 +47,7 @@ class ReciboViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getRecibos()
+        getFotoDePerfil()
         reciboTableView.reloadData()
     }
     
@@ -55,6 +56,12 @@ class ReciboViewController: UIViewController {
     func getRecibos() {
         Recibo.downloadData(buscador)
     }
+    
+    func getFotoDePerfil() {
+        if let imagemDePerfil = Perfil().carregarImagem() {             fotoPerfilImageView.image = imagemDePerfil
+        }
+    }
+    
     func configuraViewFoto() {
         escolhaFotoView.layer.borderWidth = 1
         escolhaFotoView.layer.borderColor = UIColor.systemGray2.cgColor
@@ -126,7 +133,8 @@ extension ReciboViewController: ReciboTableViewCellDelegate {
 
 extension ReciboViewController: CameraDelegate {
     func didSelectFoto(_ image: UIImage) {
-//        escolhaFotoButton.setImage(UIImage(named: ""), for: .normal)
+        //        escolhaFotoButton.setImage(UIImage(named: ""), for: .normal)
+        Perfil().salvarImagem(image)
         escolhaFotoButton.isHidden = true
         fotoPerfilImageView.image = image
     }
@@ -134,7 +142,7 @@ extension ReciboViewController: CameraDelegate {
 
 extension ReciboViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-       
+        
         switch type {
         case .delete:
             if let indexPath = indexPath {
