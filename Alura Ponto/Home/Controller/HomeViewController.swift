@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class HomeViewController: UIViewController {
 
@@ -21,10 +22,17 @@ class HomeViewController: UIViewController {
     private var timer: Timer?
     private lazy var camera = Camera()
     private lazy var controladorDeImagem = UIImagePickerController()
+    
     var contexto: NSManagedObjectContext = {
         let contexto = UIApplication.shared.delegate as! AppDelegate
         return contexto.persistentContainer.viewContext
     }()
+    
+    lazy var gerenciadorDeLocalizacao = CLLocationManager()
+    private var latitude: CLLocationDegrees?
+    private var longitude: CLLocationDegrees?
+    private lazy var localizacao = Localizacao()
+    weak var delegate: LocalizacaoDelegate?
     
     // MARK: - View life cycle
 
@@ -76,6 +84,11 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func requisicaoLocalizacaoUsuario(){
+        localizacao.delegate = self
+        localizacao.permissao(gerenciadorDeLocalizacao)
+    }
+    
     // MARK: - IBActions
     
     @IBAction func registrarButton(_ sender: UIButton) {
@@ -83,9 +96,18 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
+
 extension HomeViewController: CameraDelegate {
     func didSelectFoto(_ image: UIImage) {
-        let recibo = Recibo(status: false, data: Date(), foto: image)
+        let recibo = Recibo(status: false, data: Date(), foto: image, latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
         recibo.save(contexto)
+    }
+}
+
+extension HomeViewController: LocalizacaoDelegate {
+    func atualizacaLocalizacaoUsuario(latitude: Double?, longitude: Double?) {
+        self.latitude = latitude ?? 0.0
+        self.longitude = longitude ?? 0.0
     }
 }

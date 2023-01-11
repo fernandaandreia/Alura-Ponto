@@ -23,6 +23,9 @@
 		03FDE29A270A3F06004053A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDE299270A3F06004053A7 /* Camera.swift */; };
 		FA1EB26A295E062A00669B0E /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1EB269295E062A00669B0E /* Perfil.swift */; };
 		FAA9D955296F319900E6D975 /* AutenticacaoLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9D954296F319900E6D975 /* AutenticacaoLocal.swift */; };
+		FAA9D957296F4BA600E6D975 /* Localizacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9D956296F4BA600E6D975 /* Localizacao.swift */; };
+		FAA9D95D296F537100E6D975 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9D95B296F537100E6D975 /* MapaViewController.swift */; };
+		FAA9D95E296F537100E6D975 /* MapaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA9D95C296F537100E6D975 /* MapaViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		FA1EB268295E05FA00669B0E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		FA1EB269295E062A00669B0E /* Perfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
 		FAA9D954296F319900E6D975 /* AutenticacaoLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticacaoLocal.swift; sourceTree = "<group>"; };
+		FAA9D956296F4BA600E6D975 /* Localizacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizacao.swift; sourceTree = "<group>"; };
+		FAA9D95B296F537100E6D975 /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
+		FAA9D95C296F537100E6D975 /* MapaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapaViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 				030EF1B926FBD69B000D3E42 /* AppDelegate */,
 				030EF1BC26FBD6B8000D3E42 /* Home */,
 				030EF1CF26FBE686000D3E42 /* Recibo */,
+				FAA9D958296F531400E6D975 /* Map */,
 				03431DD02703BD0A00EB8D91 /* CoreData */,
 				030EF1AE26FBD61E000D3E42 /* Assets.xcassets */,
 				030EF1B026FBD61E000D3E42 /* LaunchScreen.storyboard */,
@@ -158,6 +165,7 @@
 				03431DCB270290D200EB8D91 /* FormatadorDeData.swift */,
 				FA1EB269295E062A00669B0E /* Perfil.swift */,
 				FAA9D954296F319900E6D975 /* AutenticacaoLocal.swift */,
+				FAA9D956296F4BA600E6D975 /* Localizacao.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +193,31 @@
 				FA1EB268295E05FA00669B0E /* HomeViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FAA9D958296F531400E6D975 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9D95A296F533500E6D975 /* Controller */,
+				FAA9D959296F532500E6D975 /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		FAA9D959296F532500E6D975 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9D95C296F537100E6D975 /* MapaViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAA9D95A296F533500E6D975 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9D95B296F537100E6D975 /* MapaViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +282,7 @@
 				030EF1B226FBD61E000D3E42 /* LaunchScreen.storyboard in Resources */,
 				030EF1AF26FBD61E000D3E42 /* Assets.xcassets in Resources */,
 				030EF1C826FBE529000D3E42 /* HomeViewController.xib in Resources */,
+				FAA9D95E296F537100E6D975 /* MapaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +295,8 @@
 			files = (
 				030EF1D926FD2A13000D3E42 /* ReciboTableViewCell.swift in Sources */,
 				FAA9D955296F319900E6D975 /* AutenticacaoLocal.swift in Sources */,
+				FAA9D95D296F537100E6D975 /* MapaViewController.swift in Sources */,
+				FAA9D957296F4BA600E6D975 /* Localizacao.swift in Sources */,
 				030EF1CB26FBE62E000D3E42 /* ReciboViewController.swift in Sources */,
 				03431DD32703BD2B00EB8D91 /* Alura_Ponto.xcdatamodeld in Sources */,
 				030EF1A626FBD61C000D3E42 /* AppDelegate.swift in Sources */,

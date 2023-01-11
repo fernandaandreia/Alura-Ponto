@@ -10,8 +10,8 @@ import LocalAuthentication
 
 class AutenticacaoLocal {
     
-    let authenticatorContext = LAContext()
-    var error: NSError? //inout muda o parametro
+    private let authenticatorContext = LAContext()
+    private var error: NSError? //inout muda o parametro
     
     func autorizaUsuario(completion: @escaping(_ autenticacao: Bool) -> Void) {
         if authenticatorContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
