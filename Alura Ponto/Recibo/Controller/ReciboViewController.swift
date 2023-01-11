@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+//import LocalAuthentication // Autentificacao do usuário
 
 class ReciboViewController: UIViewController {
     
@@ -117,6 +118,7 @@ extension ReciboViewController: UITableViewDataSource {
     }
 }
 
+
 extension ReciboViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -125,9 +127,13 @@ extension ReciboViewController: UITableViewDelegate {
 
 extension ReciboViewController: ReciboTableViewCellDelegate {
     func deletarRecibo(_ index: Int) {
-        guard let recibo = buscador.fetchedObjects?[index] else { return }
-        recibo.deletar(contexto)
-        reciboTableView.reloadData()
+        AutenticacaoLocal().autorizaUsuario { autenticado in
+            if autenticado {
+                guard let recibo = self.buscador.fetchedObjects?[index] else { return }
+                recibo.deletar(self.contexto)
+            }
+        }
+        
     }
 }
 
